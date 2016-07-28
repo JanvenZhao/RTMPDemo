@@ -13,6 +13,7 @@
 		ED463E351D4A025100D77DE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED463E331D4A025100D77DE4 /* Main.storyboard */; };
 		ED463E371D4A025100D77DE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED463E361D4A025100D77DE4 /* Assets.xcassets */; };
 		ED463E3A1D4A025100D77DE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED463E381D4A025100D77DE4 /* LaunchScreen.storyboard */; };
+		ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		ED463E361D4A025100D77DE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED463E391D4A025100D77DE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED463E3B1D4A025100D77DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 		ED463E1E1D4A025100D77DE4 = {
 			isa = PBXGroup;
 			children = (
+				ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */,
 				ED463E291D4A025100D77DE4 /* RTMPDemo */,
 				ED463E281D4A025100D77DE4 /* Products */,
 			);
@@ -110,6 +114,7 @@
 				TargetAttributes = {
 					ED463E261D4A025100D77DE4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5U4E6NB59X;
 					};
 				};
 			};
@@ -217,6 +222,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "90ca259b-fd4e-41ec-a00b-30fb9d0ecb94";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -263,10 +269,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RTMPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.RTMPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -274,10 +283,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RTMPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.RTMPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
