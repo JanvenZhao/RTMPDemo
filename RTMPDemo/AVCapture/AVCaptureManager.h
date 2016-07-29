@@ -8,6 +8,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+
+
 @class AVCapturePreview;
 @interface AVCaptureManager : NSObject
 

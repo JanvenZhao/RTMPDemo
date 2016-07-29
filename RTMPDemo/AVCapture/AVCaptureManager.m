@@ -8,10 +8,15 @@
 
 #import "AVCaptureManager.h"
 #import <ImageIO/ImageIO.h>
-
 #import "AVCapturePreview.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import "H264HwEncoderImpl.h"
+#import "H264HwDecoderImpl.h"
+#import "AAPLEAGLLayer.h"
+#import "config.h"
+#import "PublicDefine.h"
 
-@interface AVCaptureManager ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>{
+@interface AVCaptureManager ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,H264HwEncoderImplDelegate,H264HwDecoderImplDelegate>{
     
     //视频采集
     
@@ -25,7 +30,15 @@
     dispatch_queue_t    _audioQueue;
     AVCaptureAudioDataOutput *_audioOutput;
     AVCaptureConnection *_audioConnection;
+ 
+    //h264编码
+    H264HwEncoderImpl *h264Encoder;
+    //h264解码
+    H264HwDecoderImpl *h264Decoder;
     
+    
+    AAPLEAGLLayer *playLayer;
+
 }
 @end
 
@@ -133,7 +146,22 @@
     
     // 保存Connection，用于在SampleBufferDelegate中判断数据来源
     _audioConnection = [_audioOutput connectionWithMediaType:AVMediaTypeAudio];
+    
+    
+    /************分界线**************/
+    
+    h264Encoder = [H264HwEncoderImpl alloc];
+    [h264Encoder initWithConfiguration];
+    [h264Encoder initEncode:h264outputWidth height:h264outputHeight];
+    h264Encoder.delegate = self;
+    
+    h264Decoder = [[H264HwDecoderImpl alloc] init];
+    h264Decoder.delegate = self;
+    
 }
+
+
+
 
 //捕获照片
 -(void)captureImage{
@@ -172,10 +200,16 @@
         return;
     }
 
-    CGRect frame = CGRectMake(0, 0, aView.frame.size.width, aView.frame.size.height);
+    CGRect frame = CGRectMake(0, 0, aView.frame.size.width, 180);
     self.preview= [[AVCapturePreview alloc] initWithFrame:frame];
     [self.preview setSession:self.session];
     [aView addSubview:self.preview];
+    
+    
+    /*******解码后视频播放********/
+    playLayer = [[AAPLEAGLLayer alloc] initWithFrame:CGRectMake(0, 200, SCREEN_WEIGHT,180)];
+    playLayer.backgroundColor = [UIColor blackColor].CGColor;
+    [aView.layer addSublayer:playLayer];
     
 }
 
@@ -207,6 +241,8 @@
     return [self preView];
 }
 
+#pragma mark - 音视频采集回调
+
 - (void) captureOutput:(AVCaptureOutput *)captureOutput
  didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         fromConnection:(AVCaptureConnection *)connection
@@ -214,13 +250,9 @@
     // 这里的sampleBuffer就是采集到的数据了，但它是Video还是Audio的数据，得根据connection来判断
     if (connection == _videoConnection) {  // Video
         
-         // 取得当前视频尺寸信息
-         CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-         int width = CVPixelBufferGetWidth(pixelBuffer);
-         int height = CVPixelBufferGetHeight(pixelBuffer);
-         NSLog(@"video width: %d  height: %d", width, height);
-         
         NSLog(@"在这里获得video sampleBuffer，做进一步处理（编码H.264）");
+        [h264Encoder encode:sampleBuffer];
+
         
     } else if (connection == _audioConnection) {
         // Audio
@@ -230,7 +262,7 @@
     }
 }
 
-
+/*
 -(void)checkTheAVAuthorizationStatus:(NSString * const)media_Type{
 
     if([[UIDevice currentDevice].systemVersion floatValue]>= 7.0) {
@@ -275,6 +307,84 @@
     }
     
 }
+*/
 
 
+#pragma mark -  H264编码回调  H264HwEncoderImplDelegate
+- (void)gotSpsPps:(NSData*)sps pps:(NSData*)pps
+{
+    const char bytes[] = "\x00\x00\x00\x01";
+    size_t length = (sizeof bytes) - 1;
+    NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
+    //发sps
+    NSMutableData *h264Data = [[NSMutableData alloc] init];
+    [h264Data appendData:ByteHeader];
+    [h264Data appendData:sps];
+    [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+    //发pps
+    [h264Data resetBytesInRange:NSMakeRange(0, [h264Data length])];
+    [h264Data setLength:0];
+    [h264Data appendData:ByteHeader];
+    [h264Data appendData:pps];
+    
+    [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+}
+
+- (void)gotEncodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame
+{
+    const char bytes[] = "\x00\x00\x00\x01";
+    size_t length = (sizeof bytes) - 1;
+    NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
+    NSMutableData *h264Data = [[NSMutableData alloc] init];
+    [h264Data appendData:ByteHeader];
+    [h264Data appendData:data];
+    [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+}
+
+#pragma mark -  H264解码回调  H264HwDecoderImplDelegate delegare
+- (void)displayDecodedFrame:(CVImageBufferRef )imageBuffer
+{
+    if(imageBuffer)
+    {
+        playLayer.pixelBuffer = imageBuffer;
+        CVPixelBufferRelease(imageBuffer);
+    }
+}
+
+/*
+#pragma mark -  方向设置
+
+#if TARGET_OS_IPHONE
+
+- (void)statusBarOrientationDidChange:(NSNotification*)notification {
+    [self setRelativeVideoOrientation];
+}
+
+- (void)setRelativeVideoOrientation {
+    switch ([[UIDevice currentDevice] orientation]) {
+        case UIInterfaceOrientationPortrait:
+#if defined(__IPHONE_8_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_8_0
+        case UIInterfaceOrientationUnknown:
+#endif
+            recordLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
+            connectionVideo.videoOrientation = AVCaptureVideoOrientationPortrait;
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            recordLayer.connection.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+            connectionVideo.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            recordLayer.connection.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            connectionVideo.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            recordLayer.connection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            connectionVideo.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+            break;
+        default:
+            break;
+    }
+}
+#endif
+*/
 @end

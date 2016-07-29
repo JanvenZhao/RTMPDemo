@@ -14,8 +14,13 @@
 		ED463E371D4A025100D77DE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED463E361D4A025100D77DE4 /* Assets.xcassets */; };
 		ED463E3A1D4A025100D77DE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED463E381D4A025100D77DE4 /* LaunchScreen.storyboard */; };
 		ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */; };
-		ED463E4D1D4B21FD00D77DE4 /* AVCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */; };
-		ED463E4E1D4B21FD00D77DE4 /* AVCapturePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */; };
+		ED463E5C1D4B37D000D77DE4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E5B1D4B37D000D77DE4 /* VideoToolbox.framework */; };
+		ED463E681D4B3D8000D77DE4 /* AAPLEAGLLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E631D4B3D8000D77DE4 /* AAPLEAGLLayer.m */; };
+		ED463E691D4B3D8000D77DE4 /* H264HwDecoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E651D4B3D8000D77DE4 /* H264HwDecoderImpl.m */; };
+		ED463E6A1D4B3D8000D77DE4 /* H264HwEncoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E671D4B3D8000D77DE4 /* H264HwEncoderImpl.m */; };
+		ED463E701D4B3DC000D77DE4 /* AVCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */; };
+		ED463E711D4B3DC000D77DE4 /* AVCapturePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */; };
+		ED463E731D4B3E0600D77DE4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E721D4B3E0600D77DE4 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,11 +35,20 @@
 		ED463E391D4A025100D77DE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED463E3B1D4A025100D77DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		ED463E491D4B21FD00D77DE4 /* AVCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureManager.h; sourceTree = "<group>"; };
-		ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureManager.m; sourceTree = "<group>"; };
-		ED463E4B1D4B21FD00D77DE4 /* AVCapturePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCapturePreview.h; sourceTree = "<group>"; };
-		ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCapturePreview.m; sourceTree = "<group>"; };
 		ED463E4F1D4B221D00D77DE4 /* PublicDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicDefine.h; sourceTree = "<group>"; };
+		ED463E5B1D4B37D000D77DE4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		ED463E601D4B3D8000D77DE4 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		ED463E621D4B3D8000D77DE4 /* AAPLEAGLLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLEAGLLayer.h; sourceTree = "<group>"; };
+		ED463E631D4B3D8000D77DE4 /* AAPLEAGLLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLEAGLLayer.m; sourceTree = "<group>"; };
+		ED463E641D4B3D8000D77DE4 /* H264HwDecoderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264HwDecoderImpl.h; sourceTree = "<group>"; };
+		ED463E651D4B3D8000D77DE4 /* H264HwDecoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwDecoderImpl.m; sourceTree = "<group>"; };
+		ED463E661D4B3D8000D77DE4 /* H264HwEncoderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264HwEncoderImpl.h; sourceTree = "<group>"; };
+		ED463E671D4B3D8000D77DE4 /* H264HwEncoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwEncoderImpl.m; sourceTree = "<group>"; };
+		ED463E6C1D4B3DC000D77DE4 /* AVCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureManager.h; sourceTree = "<group>"; };
+		ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureManager.m; sourceTree = "<group>"; };
+		ED463E6E1D4B3DC000D77DE4 /* AVCapturePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCapturePreview.h; sourceTree = "<group>"; };
+		ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCapturePreview.m; sourceTree = "<group>"; };
+		ED463E721D4B3E0600D77DE4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED463E731D4B3E0600D77DE4 /* AudioToolbox.framework in Frameworks */,
+				ED463E5C1D4B37D000D77DE4 /* VideoToolbox.framework in Frameworks */,
 				ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +68,6 @@
 		ED463E1E1D4A025100D77DE4 = {
 			isa = PBXGroup;
 			children = (
-				ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */,
 				ED463E291D4A025100D77DE4 /* RTMPDemo */,
 				ED463E281D4A025100D77DE4 /* Products */,
 			);
@@ -69,19 +84,19 @@
 		ED463E291D4A025100D77DE4 /* RTMPDemo */ = {
 			isa = PBXGroup;
 			children = (
+				ED463E601D4B3D8000D77DE4 /* config.h */,
+				ED463E6B1D4B3DC000D77DE4 /* AVCapture */,
+				ED463E611D4B3D8000D77DE4 /* H264lib */,
 				ED463E2D1D4A025100D77DE4 /* AppDelegate.h */,
 				ED463E2E1D4A025100D77DE4 /* AppDelegate.m */,
 				ED463E301D4A025100D77DE4 /* ViewController.h */,
 				ED463E311D4A025100D77DE4 /* ViewController.m */,
 				ED463E331D4A025100D77DE4 /* Main.storyboard */,
 				ED463E4F1D4B221D00D77DE4 /* PublicDefine.h */,
-				ED463E491D4B21FD00D77DE4 /* AVCaptureManager.h */,
-				ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */,
-				ED463E4B1D4B21FD00D77DE4 /* AVCapturePreview.h */,
-				ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */,
 				ED463E361D4A025100D77DE4 /* Assets.xcassets */,
 				ED463E381D4A025100D77DE4 /* LaunchScreen.storyboard */,
 				ED463E3B1D4A025100D77DE4 /* Info.plist */,
+				ED463E741D4B3E2F00D77DE4 /* Frameworks */,
 				ED463E2A1D4A025100D77DE4 /* Supporting Files */,
 			);
 			path = RTMPDemo;
@@ -93,6 +108,40 @@
 				ED463E2B1D4A025100D77DE4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED463E611D4B3D8000D77DE4 /* H264lib */ = {
+			isa = PBXGroup;
+			children = (
+				ED463E621D4B3D8000D77DE4 /* AAPLEAGLLayer.h */,
+				ED463E631D4B3D8000D77DE4 /* AAPLEAGLLayer.m */,
+				ED463E641D4B3D8000D77DE4 /* H264HwDecoderImpl.h */,
+				ED463E651D4B3D8000D77DE4 /* H264HwDecoderImpl.m */,
+				ED463E661D4B3D8000D77DE4 /* H264HwEncoderImpl.h */,
+				ED463E671D4B3D8000D77DE4 /* H264HwEncoderImpl.m */,
+			);
+			path = H264lib;
+			sourceTree = "<group>";
+		};
+		ED463E6B1D4B3DC000D77DE4 /* AVCapture */ = {
+			isa = PBXGroup;
+			children = (
+				ED463E6C1D4B3DC000D77DE4 /* AVCaptureManager.h */,
+				ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */,
+				ED463E6E1D4B3DC000D77DE4 /* AVCapturePreview.h */,
+				ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */,
+			);
+			path = AVCapture;
+			sourceTree = "<group>";
+		};
+		ED463E741D4B3E2F00D77DE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED463E721D4B3E0600D77DE4 /* AudioToolbox.framework */,
+				ED463E5B1D4B37D000D77DE4 /* VideoToolbox.framework */,
+				ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +215,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED463E681D4B3D8000D77DE4 /* AAPLEAGLLayer.m in Sources */,
+				ED463E701D4B3DC000D77DE4 /* AVCaptureManager.m in Sources */,
+				ED463E711D4B3DC000D77DE4 /* AVCapturePreview.m in Sources */,
 				ED463E321D4A025100D77DE4 /* ViewController.m in Sources */,
 				ED463E2F1D4A025100D77DE4 /* AppDelegate.m in Sources */,
+				ED463E6A1D4B3D8000D77DE4 /* H264HwEncoderImpl.m in Sources */,
 				ED463E2C1D4A025100D77DE4 /* main.m in Sources */,
-				ED463E4E1D4B21FD00D77DE4 /* AVCapturePreview.m in Sources */,
-				ED463E4D1D4B21FD00D77DE4 /* AVCaptureManager.m in Sources */,
+				ED463E691D4B3D8000D77DE4 /* H264HwDecoderImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
