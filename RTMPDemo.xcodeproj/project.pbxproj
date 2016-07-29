@@ -14,6 +14,8 @@
 		ED463E371D4A025100D77DE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED463E361D4A025100D77DE4 /* Assets.xcassets */; };
 		ED463E3A1D4A025100D77DE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED463E381D4A025100D77DE4 /* LaunchScreen.storyboard */; };
 		ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */; };
+		ED463E4D1D4B21FD00D77DE4 /* AVCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */; };
+		ED463E4E1D4B21FD00D77DE4 /* AVCapturePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,11 @@
 		ED463E391D4A025100D77DE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED463E3B1D4A025100D77DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED463E411D4A0A7000D77DE4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ED463E491D4B21FD00D77DE4 /* AVCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureManager.h; sourceTree = "<group>"; };
+		ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureManager.m; sourceTree = "<group>"; };
+		ED463E4B1D4B21FD00D77DE4 /* AVCapturePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCapturePreview.h; sourceTree = "<group>"; };
+		ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCapturePreview.m; sourceTree = "<group>"; };
+		ED463E4F1D4B221D00D77DE4 /* PublicDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PublicDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +74,11 @@
 				ED463E301D4A025100D77DE4 /* ViewController.h */,
 				ED463E311D4A025100D77DE4 /* ViewController.m */,
 				ED463E331D4A025100D77DE4 /* Main.storyboard */,
+				ED463E4F1D4B221D00D77DE4 /* PublicDefine.h */,
+				ED463E491D4B21FD00D77DE4 /* AVCaptureManager.h */,
+				ED463E4A1D4B21FD00D77DE4 /* AVCaptureManager.m */,
+				ED463E4B1D4B21FD00D77DE4 /* AVCapturePreview.h */,
+				ED463E4C1D4B21FD00D77DE4 /* AVCapturePreview.m */,
 				ED463E361D4A025100D77DE4 /* Assets.xcassets */,
 				ED463E381D4A025100D77DE4 /* LaunchScreen.storyboard */,
 				ED463E3B1D4A025100D77DE4 /* Info.plist */,
@@ -157,6 +169,8 @@
 				ED463E321D4A025100D77DE4 /* ViewController.m in Sources */,
 				ED463E2F1D4A025100D77DE4 /* AppDelegate.m in Sources */,
 				ED463E2C1D4A025100D77DE4 /* main.m in Sources */,
+				ED463E4E1D4B21FD00D77DE4 /* AVCapturePreview.m in Sources */,
+				ED463E4D1D4B21FD00D77DE4 /* AVCaptureManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,7 @@
 				ED463E401D4A025100D77DE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
