@@ -108,12 +108,12 @@ void didCompressH264(void *outputCallbackRefCon, void *sourceFrameRefCon, OSStat
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_RealTime, kCFBooleanTrue);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_ProfileLevel, kVTProfileLevel_H264_Baseline_4_1);
         
-        SInt32 bitRate = width*height*50;  //越高效果越屌  帧数据越大
+        SInt32 bitRate = width*height*100;  //越高效果越屌  帧数据越大
         CFNumberRef ref = CFNumberCreate(kCFAllocatorDefault, kCFNumberSInt32Type, &bitRate);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_AverageBitRate, ref);
         CFRelease(ref);
 
-        int frameInterval = 10; //关键帧间隔 越低效果越屌 帧数据越大
+        int frameInterval = 5; //关键帧间隔 越低效果越屌 帧数据越大
         CFNumberRef  frameIntervalRef = CFNumberCreate(kCFAllocatorDefault, kCFNumberIntType, &frameInterval);
         VTSessionSetProperty(EncodingSession, kVTCompressionPropertyKey_MaxKeyFrameInterval,frameIntervalRef);
         CFRelease(frameIntervalRef);

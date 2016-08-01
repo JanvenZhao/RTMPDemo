@@ -19,7 +19,6 @@
 		ED463E691D4B3D8000D77DE4 /* H264HwDecoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E651D4B3D8000D77DE4 /* H264HwDecoderImpl.m */; };
 		ED463E6A1D4B3D8000D77DE4 /* H264HwEncoderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E671D4B3D8000D77DE4 /* H264HwEncoderImpl.m */; };
 		ED463E701D4B3DC000D77DE4 /* AVCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */; };
-		ED463E711D4B3DC000D77DE4 /* AVCapturePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */; };
 		ED463E731D4B3E0600D77DE4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED463E721D4B3E0600D77DE4 /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +45,6 @@
 		ED463E671D4B3D8000D77DE4 /* H264HwEncoderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264HwEncoderImpl.m; sourceTree = "<group>"; };
 		ED463E6C1D4B3DC000D77DE4 /* AVCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCaptureManager.h; sourceTree = "<group>"; };
 		ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCaptureManager.m; sourceTree = "<group>"; };
-		ED463E6E1D4B3DC000D77DE4 /* AVCapturePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCapturePreview.h; sourceTree = "<group>"; };
-		ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCapturePreview.m; sourceTree = "<group>"; };
 		ED463E721D4B3E0600D77DE4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -128,8 +125,6 @@
 			children = (
 				ED463E6C1D4B3DC000D77DE4 /* AVCaptureManager.h */,
 				ED463E6D1D4B3DC000D77DE4 /* AVCaptureManager.m */,
-				ED463E6E1D4B3DC000D77DE4 /* AVCapturePreview.h */,
-				ED463E6F1D4B3DC000D77DE4 /* AVCapturePreview.m */,
 			);
 			path = AVCapture;
 			sourceTree = "<group>";
@@ -217,7 +212,6 @@
 			files = (
 				ED463E681D4B3D8000D77DE4 /* AAPLEAGLLayer.m in Sources */,
 				ED463E701D4B3DC000D77DE4 /* AVCaptureManager.m in Sources */,
-				ED463E711D4B3DC000D77DE4 /* AVCapturePreview.m in Sources */,
 				ED463E321D4A025100D77DE4 /* ViewController.m in Sources */,
 				ED463E2F1D4A025100D77DE4 /* AppDelegate.m in Sources */,
 				ED463E6A1D4B3D8000D77DE4 /* H264HwEncoderImpl.m in Sources */,

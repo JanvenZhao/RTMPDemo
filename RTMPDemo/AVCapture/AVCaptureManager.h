@@ -11,25 +11,33 @@
 
 
 @class AVCapturePreview;
+
 @interface AVCaptureManager : NSObject
 
-@property (nonatomic,strong) AVCaptureSession *session;
 @property (nonatomic,strong) AVCaptureStillImageOutput *captureOutput;
 @property (nonatomic,strong) UIImage *image;
-@property (nonatomic,strong) AVCapturePreview   *preview;
+
+@property (nonatomic,assign) UIView *preview_View;
 
 +(AVCaptureManager *)sharedInstance;
 
-+(void)startRunning;
-
-+(void)stopRunning;
+/**
+ *  初始化 主要是h264
+ */
+-(void)initialize;
 
 +(void)captureStillImage;
-
-+(UIImage *)image;
-
-+(AVCapturePreview *)preView;
-
--(void)embedPreviewInView:(UIView *)aView;
+/**
+ *  开始录制
+ */
+- (void) startCamera;
+/**
+ *  停止录制
+ */
+- (void) stopCamera;
+/**
+ *  切换摄像头
+ */
+-(void)switchTheCamera;
 
 @end
