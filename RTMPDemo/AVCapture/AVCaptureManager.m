@@ -14,6 +14,7 @@
 #import "AAPLEAGLLayer.h"
 #import "config.h"
 #import "PublicDefine.h"
+#import "rtmpManager.h"
 
 @interface AVCaptureManager ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,H264HwEncoderImplDelegate,H264HwDecoderImplDelegate>{
     
@@ -364,21 +365,31 @@
 #pragma mark -  H264编码回调  H264HwEncoderImplDelegate
 - (void)gotSpsPps:(NSData*)sps pps:(NSData*)pps
 {
+    
     const char bytes[] = "\x00\x00\x00\x01";
     size_t length = (sizeof bytes) - 1;
     NSData *ByteHeader = [NSData dataWithBytes:bytes length:length];
     //发sps
-    NSMutableData *h264Data = [[NSMutableData alloc] init];
-    [h264Data appendData:ByteHeader];
-    [h264Data appendData:sps];
-    [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+    NSMutableData *sps_Data = [[NSMutableData alloc] init];
+    [sps_Data appendData:ByteHeader];
+    [sps_Data appendData:sps];
+    [h264Decoder decodeNalu:(uint8_t *)[sps_Data bytes] withSize:(uint32_t)sps_Data.length];
     //发pps
-    [h264Data resetBytesInRange:NSMakeRange(0, [h264Data length])];
-    [h264Data setLength:0];
-    [h264Data appendData:ByteHeader];
-    [h264Data appendData:pps];
+    NSMutableData *pps_Data = [[NSMutableData alloc] init];
+    [pps_Data appendData:ByteHeader];
+    [pps_Data appendData:pps];
     //解码
-    [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+    [h264Decoder decodeNalu:(uint8_t *)[pps_Data bytes] withSize:(uint32_t)pps_Data.length];
+    
+    //发送到RTMP服务器
+    unsigned char *sps_char = (unsigned char*)[sps bytes];
+    unsigned char *pps_char = (unsigned char *)[pps bytes];
+    
+    [[rtmpManager  getInstance] send_video_sps_pps:sps_char
+                                      andSpsLength:(int)sps.length
+                                            andPPs:pps_char
+                                      andPPsLength:(int)pps.length];
+    
 }
 
 - (void)gotEncodedData:(NSData*)data isKeyFrame:(BOOL)isKeyFrame
@@ -390,6 +401,8 @@
     [h264Data appendData:ByteHeader];
     [h264Data appendData:data];
     [h264Decoder decodeNalu:(uint8_t *)[h264Data bytes] withSize:(uint32_t)h264Data.length];
+    unsigned char *data_char = (unsigned char *)[data bytes];
+    [[rtmpManager getInstance] send_rtmp_video:data_char andLength:(int)data.length];
 }
 
 #pragma mark -  H264解码回调  H264HwDecoderImplDelegate delegare

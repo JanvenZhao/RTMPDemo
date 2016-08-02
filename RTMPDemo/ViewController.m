@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AVCaptureManager.h"
 #import "PublicDefine.h"
+#import "AudioManager.h"
+#import "rtmpManager.h"
 
 @implementation ViewController
 
@@ -17,9 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-
+    [[rtmpManager getInstance] startRtmpConnect:@"rtmp://192.168.5.119:1935/zbcs/room"];
     
+    [[AudioManager getInstance] initRecording];
+
     
     if (TARGET_IPHONE_SIMULATOR) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
@@ -69,11 +72,13 @@
 -(void)closeTheCamera{
 
     [[AVCaptureManager sharedInstance] stopCamera];
+    [[AudioManager getInstance] pauseRecording];
 }
 
 -(void)openTheCamera{
     
     [[AVCaptureManager sharedInstance] startCamera];
+    [[AudioManager getInstance] startRecording];
 }
 
 
