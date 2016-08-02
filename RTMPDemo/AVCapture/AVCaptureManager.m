@@ -307,7 +307,7 @@
         
     } else if (connection == _audioConnection) {
         // Audio
-        NSLog(@"这里获得audio sampleBuffer，做进一步处理（编码AAC）");
+        //NSLog(@"这里获得audio sampleBuffer，做进一步处理（编码AAC）");
         
         
     }

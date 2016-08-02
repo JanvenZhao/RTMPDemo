@@ -23,6 +23,10 @@
 		ED574EEB1D504F81009ED54F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED574EDC1D504F81009ED54F /* libcrypto.a */; };
 		ED574EED1D504F81009ED54F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED574EDE1D504F81009ED54F /* libssl.a */; };
 		ED574EF51D507851009ED54F /* librtmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED574EF41D507851009ED54F /* librtmp.a */; };
+		ED574EFB1D507A08009ED54F /* libfaac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED574EFA1D507A08009ED54F /* libfaac.a */; };
+		ED574F001D507A44009ED54F /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED574EFD1D507A44009ED54F /* AudioManager.m */; };
+		ED574F011D507A44009ED54F /* rtmpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED574EFF1D507A44009ED54F /* rtmpManager.m */; };
+		ED574F031D507AE2009ED54F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ED574F021D507AE2009ED54F /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +135,14 @@
 		ED574EDC1D504F81009ED54F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		ED574EDE1D504F81009ED54F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		ED574EF41D507851009ED54F /* librtmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtmp.a; sourceTree = "<group>"; };
+		ED574EF81D507A08009ED54F /* faac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = faac.h; sourceTree = "<group>"; };
+		ED574EF91D507A08009ED54F /* faaccfg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = faaccfg.h; sourceTree = "<group>"; };
+		ED574EFA1D507A08009ED54F /* libfaac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfaac.a; sourceTree = "<group>"; };
+		ED574EFC1D507A44009ED54F /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		ED574EFD1D507A44009ED54F /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
+		ED574EFE1D507A44009ED54F /* rtmpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtmpManager.h; sourceTree = "<group>"; };
+		ED574EFF1D507A44009ED54F /* rtmpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rtmpManager.m; sourceTree = "<group>"; };
+		ED574F021D507AE2009ED54F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,11 +150,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED574F031D507AE2009ED54F /* libz.tbd in Frameworks */,
 				ED463E731D4B3E0600D77DE4 /* AudioToolbox.framework in Frameworks */,
 				ED463E5C1D4B37D000D77DE4 /* VideoToolbox.framework in Frameworks */,
 				ED574EEB1D504F81009ED54F /* libcrypto.a in Frameworks */,
 				ED463E421D4A0A7000D77DE4 /* AVFoundation.framework in Frameworks */,
 				ED574EF51D507851009ED54F /* librtmp.a in Frameworks */,
+				ED574EFB1D507A08009ED54F /* libfaac.a in Frameworks */,
 				ED574EED1D504F81009ED54F /* libssl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +167,7 @@
 		ED463E1E1D4A025100D77DE4 = {
 			isa = PBXGroup;
 			children = (
+				ED574F021D507AE2009ED54F /* libz.tbd */,
 				ED463E291D4A025100D77DE4 /* RTMPDemo */,
 				ED463E281D4A025100D77DE4 /* Products */,
 			);
@@ -170,9 +185,14 @@
 			isa = PBXGroup;
 			children = (
 				ED574E651D504F80009ED54F /* librtmp */,
+				ED463E611D4B3D8000D77DE4 /* H264lib */,
+				ED574EF61D507A08009ED54F /* AAC */,
 				ED463E601D4B3D8000D77DE4 /* config.h */,
 				ED463E6B1D4B3DC000D77DE4 /* AVCapture */,
-				ED463E611D4B3D8000D77DE4 /* H264lib */,
+				ED574EFC1D507A44009ED54F /* AudioManager.h */,
+				ED574EFD1D507A44009ED54F /* AudioManager.m */,
+				ED574EFE1D507A44009ED54F /* rtmpManager.h */,
+				ED574EFF1D507A44009ED54F /* rtmpManager.m */,
 				ED463E2D1D4A025100D77DE4 /* AppDelegate.h */,
 				ED463E2E1D4A025100D77DE4 /* AppDelegate.m */,
 				ED463E301D4A025100D77DE4 /* ViewController.h */,
@@ -349,6 +369,24 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		ED574EF61D507A08009ED54F /* AAC */ = {
+			isa = PBXGroup;
+			children = (
+				ED574EF71D507A08009ED54F /* include */,
+				ED574EFA1D507A08009ED54F /* libfaac.a */,
+			);
+			path = AAC;
+			sourceTree = "<group>";
+		};
+		ED574EF71D507A08009ED54F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				ED574EF81D507A08009ED54F /* faac.h */,
+				ED574EF91D507A08009ED54F /* faaccfg.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,12 +458,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED574F011D507A44009ED54F /* rtmpManager.m in Sources */,
 				ED463E681D4B3D8000D77DE4 /* AAPLEAGLLayer.m in Sources */,
 				ED463E701D4B3DC000D77DE4 /* AVCaptureManager.m in Sources */,
 				ED463E321D4A025100D77DE4 /* ViewController.m in Sources */,
 				ED463E2F1D4A025100D77DE4 /* AppDelegate.m in Sources */,
 				ED463E6A1D4B3D8000D77DE4 /* H264HwEncoderImpl.m in Sources */,
 				ED463E2C1D4A025100D77DE4 /* main.m in Sources */,
+				ED574F001D507A44009ED54F /* AudioManager.m in Sources */,
 				ED463E691D4B3D8000D77DE4 /* H264HwDecoderImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RTMPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -548,6 +589,7 @@
 					"$(PROJECT_DIR)/RTMPDemo/librtmp/lib",
 					"$(PROJECT_DIR)/RTMPDemo/librtmp",
 					"$(PROJECT_DIR)/RTMPDemo",
+					"$(PROJECT_DIR)/RTMPDemo/AAC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.RTMPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,6 +603,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RTMPDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -568,6 +611,7 @@
 					"$(PROJECT_DIR)/RTMPDemo/librtmp/lib",
 					"$(PROJECT_DIR)/RTMPDemo/librtmp",
 					"$(PROJECT_DIR)/RTMPDemo",
+					"$(PROJECT_DIR)/RTMPDemo/AAC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.RTMPDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
